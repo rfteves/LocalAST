@@ -1,5 +1,5 @@
 # LocalAST
-This is a naive and simple example of Groovy AST Transformation that would add console messages at the start and end of a method invocation. The following Product class would actually starting and ending messages.
+This is a naive and simple example of Groovy AST Transformation that would add console messages at the start and end of a method invocation. The following Product class would actually print starting and ending messages.
 
 ```
 import localast.WithLogging
