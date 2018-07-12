@@ -58,7 +58,7 @@ class WithLoggingASTTransformation implements ASTTransformation {
                         new VariableExpression("this"),
                         new ConstantExpression("println"),
                         new ArgumentListExpression(
-                                new GStringExpression('', strings, values)
+                                new GStringExpression('verbatim', strings, values)
                         )
                 )
         )
