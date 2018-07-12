@@ -29,15 +29,17 @@ class WithLoggingASTTransformation implements ASTTransformation {
         MethodNode method = (MethodNode) nodes[1]
 
         def existingStatements = ((BlockStatement)method.code).statements
-
-        println method.getProperties()
         def listExpressions = (ListExpression<String>)method.getAnnotations()[0].getMembers().get('properties')
         def gStrings = getVariables(listExpressions)
 
-        Statement first = createStatement('\nStarting AST ', gStrings)
-        Statement last = createStatement('\nEnding AST ', gStrings)
+        Statement first = createStatement("\nStarting $method.name ", gStrings)
+        Statement last = createStatement("\nEnding $method.name ", gStrings)
         existingStatements.add(0, first)
-        existingStatements.add(last)
+        if (method.isDynamicReturnType()) {
+            existingStatements.add(existingStatements.size(), last)
+        } else {
+            existingStatements.add(last)
+        }
     }
 
     private static Statement createStatement(String message, List<String> gString) {
@@ -56,7 +58,7 @@ class WithLoggingASTTransformation implements ASTTransformation {
                         new VariableExpression("this"),
                         new ConstantExpression("println"),
                         new ArgumentListExpression(
-                                new GStringExpression('varbatim', strings, values)
+                                new GStringExpression('', strings, values)
                         )
                 )
         )

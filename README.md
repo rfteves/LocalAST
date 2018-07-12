@@ -28,14 +28,14 @@ class Product {
 }
 ```
 
-computeMsrp(), the following will be printed:
+**computeMsrp()**, the following will be printed:
 
 Starting computeMsrp -1.0 
 computeMsrp
 
 Ending computeMsrp 1.25
 
-computeMsrpVoid(), the following will be printed:
+**computeMsrpVoid()**, the following will be printed:
 
 Starting computeMsrpVoid 1.25 
 computeMsrpVoid
